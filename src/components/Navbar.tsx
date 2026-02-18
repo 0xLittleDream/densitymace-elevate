@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -32,7 +33,7 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <NavLink to="/" className="group relative font-heading font-bold text-xl text-foreground">
-          DensityMace
+          <img src={logoImg} alt="DensityMace" className="h-7 brightness-0 invert" />
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
         </NavLink>
 

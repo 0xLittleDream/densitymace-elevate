@@ -3,6 +3,7 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Film, Youtube, Tv, Mic, Gamepad2, Zap, Clock, TrendingUp, MonitorSmartphone, RotateCcw, ArrowRight, Play, Sparkles, Eye, Star } from "lucide-react";
+import profileImg from "@/assets/profile.png";
 
 /* ─── data ─── */
 const editServices = [
@@ -128,8 +129,8 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           className="mb-8 relative"
         >
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-secondary to-card border-2 border-primary/30 glow-blue animate-float flex items-center justify-center relative z-10">
-            <span className="font-heading font-bold text-4xl text-gradient">D</span>
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-secondary to-card border-2 border-primary/30 glow-blue animate-float overflow-hidden relative z-10">
+            <img src={profileImg} alt="DensityMace" className="w-full h-full object-cover" />
           </div>
           {/* Orbit ring */}
           <motion.div
