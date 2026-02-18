@@ -84,25 +84,39 @@ const Counter = ({ end, suffix }: { end: number; suffix: string }) => {
   );
 };
 
+/* ─── floating CSS glow orbs (decorative between sections) ─── */
+const GlowOrb = ({ className }: { className: string }) => (
+  <motion.div
+    className={`absolute rounded-full pointer-events-none ${className}`}
+    animate={{
+      y: [0, -20, 0],
+      scale: [1, 1.1, 1],
+      opacity: [0.5, 0.8, 0.5],
+    }}
+    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+  />
+);
+
 /* ─── floating particles ─── */
 const Particles = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {Array.from({ length: 20 }).map((_, i) => (
+    {Array.from({ length: 30 }).map((_, i) => (
       <motion.div
         key={i}
-        className="absolute w-1 h-1 rounded-full bg-primary/20"
+        className={`absolute rounded-full ${i % 3 === 0 ? 'w-1.5 h-1.5 bg-primary/30' : i % 3 === 1 ? 'w-1 h-1 bg-[hsl(270,80%,70%)]/25' : 'w-0.5 h-0.5 bg-[hsl(180,80%,60%)]/30'}`}
         style={{
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
         }}
         animate={{
-          y: [0, -40, 0],
-          opacity: [0.2, 0.6, 0.2],
+          y: [0, -50, 0],
+          x: [0, (Math.random() - 0.5) * 30, 0],
+          opacity: [0.15, 0.6, 0.15],
         }}
         transition={{
-          duration: 4 + Math.random() * 4,
+          duration: 5 + Math.random() * 5,
           repeat: Infinity,
-          delay: Math.random() * 3,
+          delay: Math.random() * 4,
           ease: "easeInOut",
         }}
       />
@@ -114,6 +128,15 @@ const Particles = () => (
 const Index = () => {
   return (
     <div className="relative overflow-hidden">
+      {/* ═══ Decorative glow orbs scattered throughout ═══ */}
+      <GlowOrb className="w-40 h-40 bg-primary/15 blur-[60px] top-[5%] right-[5%]" />
+      <GlowOrb className="w-32 h-32 bg-[hsl(270,80%,60%)]/12 blur-[50px] top-[15%] left-[8%]" />
+      <GlowOrb className="w-24 h-24 bg-[hsl(180,80%,50%)]/10 blur-[40px] top-[35%] right-[12%]" />
+      <GlowOrb className="w-36 h-36 bg-[hsl(330,80%,55%)]/8 blur-[55px] top-[50%] left-[3%]" />
+      <GlowOrb className="w-28 h-28 bg-primary/10 blur-[45px] top-[65%] right-[7%]" />
+      <GlowOrb className="w-44 h-44 bg-[hsl(270,70%,55%)]/10 blur-[65px] top-[80%] left-[10%]" />
+      <GlowOrb className="w-20 h-20 bg-[hsl(160,70%,50%)]/10 blur-[35px] top-[90%] right-[20%]" />
+
       {/* ═══ HERO ═══ */}
       <section className="min-h-[90vh] flex flex-col items-center justify-center text-center px-6 py-24 relative">
         <Particles />
